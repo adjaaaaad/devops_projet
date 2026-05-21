@@ -1,0 +1,6 @@
+version: '3'
+services:
+  mon-site:
+    build: .
+    ports:
+      - "30001:80"
