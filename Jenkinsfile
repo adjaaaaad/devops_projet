@@ -9,7 +9,6 @@ pipeline {
         stage('Deploy') {
             steps {
                 dir('/var/jenkins_home/workspace/DEVOPS_pipeline') {
-                    // On utilise le tiret : docker-compose
                     sh 'docker-compose down'
                     sh 'docker-compose up -d'
                 }
