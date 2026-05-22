@@ -3,14 +3,14 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker build -t mon-site .'
+                sh '/usr/bin/docker build -t mon-site .'
             }
         }
         stage('Deploy') {
             steps {
                 dir('/var/jenkins_home/workspace/DEVOPS_pipeline') {
-                    sh 'docker-compose down || true'
-                    sh 'docker-compose up -d'
+                    sh '/usr/bin/docker compose down || true'
+                    sh '/usr/bin/docker compose up -d'
                 }
             }
         }
