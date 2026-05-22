@@ -9,9 +9,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 dir('/var/jenkins_home/workspace/DEVOPS_pipeline') {
-                    // On arrête et supprime l'ancien conteneur avant de relancer
-                    sh 'docker compose down'
-                    sh 'docker compose up -d'
+                    // On utilise le tiret : docker-compose
+                    sh 'docker-compose down'
+                    sh 'docker-compose up -d'
                 }
             }
         }
