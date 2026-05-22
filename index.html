@@ -2,34 +2,51 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Mon Site DevOps</title>
+    <title>Mon Site DevOps Extravagant</title>
     <style>
+        /* Fond dégradé animé */
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f2f5;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            font-family: 'Arial Black', sans-serif;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Encadré avec bordure stylisée */
+        .card {
+            background-color: #004d4d;
+            color: #ffcc00;
+            padding: 40px;
+            border: 10px double #ff6f61;
+            border-radius: 20px;
             text-align: center;
-            padding-top: 50px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            max-width: 80%;
         }
-        h1 {
-            color: #2c3e50;
-        }
-        .container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            display: inline-block;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        p {
-            color: #34495e;
-        }
+
+        h1 { font-size: 3em; color: #ff6f61; text-shadow: 2px 2px #000; }
+        p { font-size: 1.5em; color: #ffffff; }
+        .highlight { color: #32ff7e; font-weight: bold; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Bienvenue sur mon site !</h1>
+
+    <div class="card">
+        <h1>BIENVENUE SUR MON SITE EXTRAVAGANT !</h1>
         <p>Ce site a été déployé avec succès grâce à mon pipeline Jenkins.</p>
-        <p>Le déploiement automatique est maintenant actif !</p>
+        <p class="highlight">Le déploiement automatique est maintenant actif !</p>
     </div>
+
 </body>
 </html>
