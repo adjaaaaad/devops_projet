@@ -8,6 +8,8 @@ pipeline {
             }
         }
         stage('Deploy') {
+            sh 'pwd'
+            sh 'ls -la'
             steps {
                 dir('/var/jenkins_home/workspace/DEVOPS_pipeline') {
                     // La méthode la plus robuste : appeler docker-compose 
