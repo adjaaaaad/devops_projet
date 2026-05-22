@@ -9,8 +9,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 dir('/var/jenkins_home/workspace/DEVOPS_pipeline') {
-                    sh 'docker compose down || true'
-                    sh 'docker compose up -d'
+                    sh 'docker-compose down || true'
+                    sh 'docker-compose up -d'
                 }
             }
         }
