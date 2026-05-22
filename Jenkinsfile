@@ -9,8 +9,10 @@ pipeline {
         stage('Deploy') {
             steps {
                 dir('/var/jenkins_home/workspace/DEVOPS_pipeline') {
-                    sh '/usr/local/bin/docker-compose down'
-                    sh '/usr/local/bin/docker-compose up -d'
+                    // On utilise 'docker compose' via le binaire docker déjà partagé
+                    // Si 'docker compose' ne fonctionne pas, on utilise le plugin intégré
+                    sh 'docker compose down || docker-compose down'
+                    sh 'docker compose up -d || docker-compose up -d'
                 }
             }
         }
