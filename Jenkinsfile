@@ -6,10 +6,14 @@ pipeline {
                 sh 'docker build -t mon-site .'
             }
         }
-       stage('Deploy') {
-        steps {
-            sh 'docker-compose -f /var/jenkins_home/workspace/DEVOPS_pipeline/docker-compose.yml up -d --build'
+        stage('Deploy') {
+            steps {
+                dir('/var/jenkins_home/workspace/DEVOPS_pipeline') {
+                    // On arrête et supprime l'ancien conteneur avant de relancer
+                    sh 'docker compose down'
+                    sh 'docker compose up -d'
+                }
+            }
         }
-    }
     }
 }
