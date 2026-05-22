@@ -8,12 +8,10 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                dir('/var/jenkins_home/workspace/DEVOPS_pipeline') {
-                    // On utilise 'docker compose' via le binaire docker déjà partagé
-                    // Si 'docker compose' ne fonctionne pas, on utilise le plugin intégré
-                    sh 'docker compose down || docker-compose down'
-                    sh 'docker compose up -d || docker-compose up -d'
-                }
+                // On demande à l'hôte (via docker.sock) de lancer la commande
+                // Cela contourne totalement le manque de docker-compose dans Jenkins
+                sh 'docker exec -u 0 mon-projet-final_jenkins_1 docker compose -f /var/jenkins_home/workspace/DEVOPS_pipeline/docker-compose.yml down || true'
+                sh 'docker exec -u 0 mon-projet-final_jenkins_1 docker compose -f /var/jenkins_home/workspace/DEVOPS_pipeline/docker-compose.yml up -d'
             }
         }
     }
