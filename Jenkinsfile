@@ -16,5 +16,13 @@ pipeline {
                 }
             }
         }
+        stage('Monitor') {
+            steps {
+                echo 'Monitoring : Vérification de l\'état du site...'
+                // On utilise curl pour vérifier que le serveur répond avec le code 200 (OK)
+                sh 'curl -f http://localhost:80 || { echo "ALERTE : Le site ne répond pas !"; exit 1; }'
+                echo 'Monitoring : Le site est opérationnel !'
+            }
+        }
     }
 }
