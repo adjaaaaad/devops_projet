@@ -19,8 +19,10 @@ pipeline {
         stage('Monitor') {
             steps {
                 echo 'Monitoring : Vérification de l\'état du site...'
-                // On utilise curl pour vérifier que le serveur répond avec le code 200 (OK)
-                sh 'curl -f http://localhost:80 || { echo "ALERTE : Le site ne répond pas !"; exit 1; }'
+                // On attend 2 secondes pour que Nginx démarre bien
+                sh 'sleep 2' 
+                // On teste avec l'IP réelle au lieu de localhost
+                sh 'curl -f http://192.168.1.22:80 || { echo "ALERTE : Le site ne répond pas !"; exit 1; }'
                 echo 'Monitoring : Le site est opérationnel !'
             }
         }
